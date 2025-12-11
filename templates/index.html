@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Mood Detection Music Player</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <!-- face-api.js -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js" defer></script>
+    <script defer src="/static/js/app.js"></script>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="header">
+        <h1>AI Mood Detection Music Player</h1>
+        <p class="subtitle">Experience music that matches your emotions in real-time</p>
+      </header>
+
+      <main class="container">
+        <section class="controls-section">
+          <div class="controls">
+            <button id="startBtn" class="btn btn-primary">Start Detection</button>
+            <button id="stopBtn" class="btn btn-secondary" disabled>Stop</button>
+          </div>
+          <p id="status" class="status-text">Click "Start Detection" to enable camera and begin mood detection.</p>
+        </section>
+
+        <section class="video-chart-section">
+          <div class="video-wrapper">
+            <h2 class="section-title">Live Camera Feed</h2>
+            <div class="video-container">
+              <video id="video" autoplay playsinline muted></video>
+              <div id="overlayMsg" class="overlay hidden">⚠️ No face detected. Please position your face in front of the camera.</div>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <h2 class="section-title">Emotion Analysis</h2>
+            <div class="chart-container">
+              <canvas id="moodChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="now-playing-section">
+          <h2 class="section-title">Now Playing</h2>
+          <div class="now-playing">
+            <div class="mood-display">
+              <span class="mood-label">Current Mood:</span>
+              <span id="mood" class="mood-value">-</span>
+            </div>
+            <div id="trackInfo" class="track-info hidden">
+              <img id="albumImage" class="album-image" src="" alt="Album" />
+              <div class="track-details">
+                <div id="trackName" class="track-name"></div>
+                <div id="trackArtist" class="track-artist"></div>
+              </div>
+            </div>
+            <div class="audio-controls">
+              <div class="audio-buttons">
+                <button id="backwardBtn" class="audio-btn" title="Backward 10 seconds">⏪ 10s</button>
+                <div class="audio-player-wrapper">
+                  <audio id="audio" controls></audio>
+                </div>
+                <button id="forwardBtn" class="audio-btn" title="Forward 10 seconds">10s ⏩</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>
+            <strong>Note:</strong> Models are loaded from <code>/static/models</code>. 
+            Place required model files and MP3s in <code>/static/static_music</code>.
+          </p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
+
+

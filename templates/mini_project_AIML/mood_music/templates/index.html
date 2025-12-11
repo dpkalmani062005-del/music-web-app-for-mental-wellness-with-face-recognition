@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Mood Detection Music Player</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <!-- face-api.js -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js" defer></script>
+    <script defer src="/static/js/app.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>AI Mood Detection Music Player</h1>
+
+      <section class="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <p id="status">Click Start to enable camera and audio.</p>
+      </section>
+
+      <section class="video-chart">
+        <div class="video-wrapper">
+          <video id="video" autoplay playsinline muted></video>
+          <div id="overlayMsg" class="overlay hidden">⚠️ No face detected 😕</div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="moodChart"></canvas>
+        </div>
+      </section>
+
+      <section class="now-playing">
+        <p>Current mood: <span id="mood">-</span></p>
+        <audio id="audio" controls></audio>
+      </section>
+
+      <footer>
+        <p>
+          Models are loaded from <code>/static/models</code>. Place required model files
+          and MP3s in <code>/static/static_music</code>.
+        </p>
+      </footer>
+    </main>
+  </body>
+  </html>
+
+
